@@ -72,7 +72,7 @@ Cada aluno deverá implementar **uma** das funcionalidades abaixo, seguindo a nu
 | Aluno | Nº | Funcionalidade | Status |
 |-------|----|----------------|--------|
 |Danilo | 1   |      Implementação de funcionalidade de limpar lista          |   Ok     |
-|       |    |                |        |
+|Diulie      |  2  |  Implementação de funcionalidade de editar tarefa               |    ok     |
 |       |    |                |        |
 
 
