@@ -73,7 +73,7 @@ Cada aluno deverá implementar **uma** das funcionalidades abaixo, seguindo a nu
 |-------|----|----------------|--------|
 |Danilo | 1   |      Implementação de funcionalidade de limpar lista          |   Ok     |
 |Diulie      |  2  |  Implementação de funcionalidade de editar tarefa               |    ok     |
-|       |    |                |        |
+|   Pedro Moura   | 3    | Implementação de funcionalidade para duplicar tarefa       |    ok    |
 
 
 
