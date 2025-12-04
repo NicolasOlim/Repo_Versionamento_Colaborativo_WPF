@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:AppAgendaDeTarefas"
         mc:Ignorable="d"
         Title="Agenda de Tarefas WPF"
-        Height="420"
-        Width="500"
+        Height="820"
+        Width="700"
         WindowState="Maximized"
         WindowStartupLocation="CenterOwner">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -69,6 +70,13 @@
             
         </StackPanel>
         <StackPanel Grid.Row="1">
+            <ComboBox 
+                ItemsSource="{Binding ListaDeCategorias}" 
+                SelectedItem="{Binding CategoriaAtual}" />
+            
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -89,13 +97,13 @@
         
         <!-- Lista -->
         <ListBox x:Name="ListaTarefas"
-                 Grid.Row="2"
+                 Grid.Row="3"
                  FontSize="16" />
 
         <!-- Rodapé -->
-        <TextBlock Grid.Row="3" Text="Agenda de Tarefas - Versão Base"
+        <TextBlock Grid.Row="4" Text="Agenda de Tarefas - Versão Base"
                    HorizontalAlignment="Center" Margin="0,10,0,0" />
-        <StackPanel Grid.Row="3" Orientation="Horizontal">
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
             <TextBlock Text="Total de Tarefas: " Margin="0,40,0,0" />
             <TextBlock x:Name="TbxContadorTarefas" Margin="2,40,0,0" />
         </StackPanel>
