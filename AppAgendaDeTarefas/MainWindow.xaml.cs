@@ -20,10 +20,30 @@ public partial class MainWindow : Window
     private string descricao;
     private int i;
     private List<String> listaTarefas = new List<String>();
+    // Lista de categorias para preencher o ComboBox (necessita de um ComboBox no XAML)
+    public List<string> ListaDeCategorias { get; set; }
+
+    // Propriedade para capturar a seleção do ComboBox via Binding (necessita de Binding no XAML)
+    public string CategoriaAtual { get; set; }
 
     public MainWindow()
     {
         InitializeComponent();
+        ListaDeCategorias = new List<string>
+        {
+            "Manutenção Pessoal",
+            "Higiene",
+            "Manutenção do Ambiente",
+            "Compras & Suprimentos",
+            "Administrativo & Organização",
+            "Comunicação & Foco"
+        };
+        
+        // 2. Define um valor padrão para CategoriaAtual
+        CategoriaAtual = ListaDeCategorias.FirstOrDefault() ?? "Sem Categoria";
+        
+        // 3. Define o contexto de dados para os bindings (Necessário para o ComboBox e CategoriaAtual)
+        DataContext = this;
     }
 
     /// <summary>
@@ -33,10 +53,16 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void Adicionar_Click(object sender, RoutedEventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(TxtTarefa.Text))
+        // 1. Pega o texto da tarefa e a categoria selecionada (necessário para a nova funcionalidade)
+        string novaTarefa = TxtTarefa.Text.Trim();
+        string categoriaSelecionada = CategoriaAtual ?? "Sem Categoria"; // CategoriaAtual vem do Binding
+
+        if (!string.IsNullOrWhiteSpace(novaTarefa))
         {
-            ListaTarefas.Items.Add(TxtTarefa.Text);
-            AdicionarTarefas();
+            
+            string itemFormatado = $" {novaTarefa} [{categoriaSelecionada}]";
+            ListaTarefas.Items.Add(itemFormatado);
+            listaTarefas.Add(itemFormatado); 
             TxtTarefa.Clear();
             TxtTarefa.Focus();
         }
@@ -47,7 +73,6 @@ public partial class MainWindow : Window
 
         ContadorTarefa();
     }
-
     private void Limpar_lista_Click(object sender, RoutedEventArgs e)
     {
         if (ListaTarefas.Items.Count > 0)
@@ -60,15 +85,7 @@ public partial class MainWindow : Window
         TbxContadorTarefas.Text = String.Empty;
     }
 
-    private void AdicionarTarefas()
-    {
-        descricao = TxtTarefa.Text.Trim();
-
-        if (!string.IsNullOrWhiteSpace(descricao))
-        {
-            listaTarefas.Add(descricao);
-        }
-    }
+  
 
     private void Editartarefa_OnClick(object sender, RoutedEventArgs e)
     {
@@ -315,4 +332,3 @@ private void AtualizarLista()
 
 
 }
-
